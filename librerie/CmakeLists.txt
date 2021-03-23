@@ -1,0 +1,9 @@
+add_library(parabola Functions/Parabola_Implementation.cpp Functions/Parabola.h)
+add_library(random Random/Random_Number_Implementation.cpp Random/Random_Number.h)
+add_library(integrale Integral/Integral_Implementation.cpp Integral/Integral.h)
+
+target_include_directories(random INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/Random)
+target_include_directories(parabola INTERFACE  ${CMAKE_CURRENT_SOURCE_DIR}/Functions)
+target_include_directories(integrale INTERFACE  ${CMAKE_CURRENT_SOURCE_DIR}/Integral)
+
+target_link_libraries(integrale PUBLIC random)

@@ -1,0 +1,2 @@
+#define TestEfficienza_VERSION_MAJOR @TestEfficienza_VERSION_MAJOR@
+#define TestEfficienza_VERSION_MINOR @TestEfficienza_VERSION_MINOR@
