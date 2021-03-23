@@ -1,17 +1,23 @@
 cmake_minimum_required(VERSION 3.18)
-project(TestEfficienza VERSION 1.0)
+project(misura_efficienza VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 configure_file(TestEfficienzaConfig.h.in TestEfficienzaConfig.h)
 
+#test per la costruzione di un semplice modulo pybind11
+add_subdirectory(Test)
+find_package(pybind11 REQUIRED)
+pybind11_add_module(test_numero src/test_numero.cxx)
+target_link_libraries(test_numero PUBLIC numero)
+
 add_subdirectory(librerie)
 
 list(APPEND EXTRA_LIBS parabola)
 list(APPEND EXTRA_LIBS integrale)
 
-add_executable(t_efficienza test_efficienza.cxx)
+add_executable(misura_efficienza src/misura_efficienza.cxx)
 
-target_link_libraries(t_efficienza PUBLIC ${EXTRA_LIBS})
-target_include_directories(t_efficienza PUBLIC "${PROJECT_BINARY_DIR}")
+target_link_libraries(misura_efficienza PUBLIC ${EXTRA_LIBS})
+target_include_directories(misura_efficienza PUBLIC "${PROJECT_BINARY_DIR}")

@@ -1,0 +1,2 @@
+add_library(numero SHARED numero.h numero.cpp)
+target_include_directories(numero PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
